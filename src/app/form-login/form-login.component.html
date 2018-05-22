@@ -1,6 +1,44 @@
-<div *ngIf="selected">
-    <label>name:
-      <input [(ngModel)]="name" >
-    </label>
-    <p>{{name}}</p>
-</div>
+<form [formGroup]="myForm" novalidate>
+	<fieldset formGroupName="name" >
+		<div class="form-group">
+			<label>First Name</label>
+			<input type="text" class="form-control" formControlName="firstname" >
+		</div>
+		<div class="form-group ">
+			<label class="btn ">Last Name</label>
+			<input type="text" class="form-control"  formControlName="lastname" >
+		</div>
+	</fieldset>
+		<div class="form-group"  [ngClass]="{
+		'form-danger':myForm.controls.email.valid,
+		'form-ok':myForm.controls.email.invalid
+	}">
+				<label>Email</label>
+				<input type="email" class="form-control" formControlName="email">
+				<pre>{{myForm.controls.email.dirty}}</pre>
+				<pre>{{myForm.controls.email.pristine}}</pre>
+				<pre>{{myForm.controls.email.touched}}</pre>
+				<pre>{{myForm.controls.email.untouched}}</pre>
+				<pre>{{myForm.controls.email.valid}}</pre>
+				<pre>{{myForm.controls.email.invalid}}</pre>
+		</div>
+		<div class="form-group">
+				<label>Password</label>
+				<input type="password" class="form-control">
+				<pre>{{myForm.controls.password.dirty}}</pre>
+				<pre>{{myForm.controls.password.pristine}}</pre>
+		</div>
+		<div class="form-group">
+			<label>Language</label>
+			<select class="form-control">
+				<option value="0"> Please select an option</option>
+				<option *ngFor="let lang of langs" [value]= "lang">
+					{{lang}}
+				</option>
+			</select>
+			
+		</div>
+		
+
+</form>
+<pre>{{myForm.value | json}}</pre>
