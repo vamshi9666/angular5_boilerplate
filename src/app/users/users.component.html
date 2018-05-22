@@ -1,3 +1,12 @@
-<p>
-  users works!
-</p>
+<div class="buttons">
+	<button class="btn " (click)="onRegister()">Register</button>
+
+	<button class="btn" (click)="onUpdate()" >Update</button>
+
+	<button class="btn" (click)="onDelete()" >Delete</button>
+
+	<div *ngIf = selected>
+		<app-form-login></app-form-login>			
+	</div>
+
+</div>
